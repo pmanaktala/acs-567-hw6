@@ -1,0 +1,112 @@
+{
+	"info": {
+		"_postman_id": "39163caa-f0ee-421f-b86b-2b99426d7f6a",
+		"name": "Sprint Management API Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9556370"
+	},
+	"item": [
+		{
+			"name": "Calculate Average Team Capacity",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"daysOff\": 2,\n        \"ceremonyDays\": 1,\n        \"hourRangeLow\": 4,\n        \"hourRangeHigh\": 6\n    },\n    {\n        \"daysOff\": 1,\n        \"ceremonyDays\": 1,\n        \"hourRangeLow\": 5,\n        \"hourRangeHigh\": 7\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/sprint/calculateAverageTeamCapacity?sprintDays=14",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"sprint",
+						"calculateAverageTeamCapacity"
+					],
+					"query": [
+						{
+							"key": "sprintDays",
+							"value": "14"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calculate Team Capacity Range",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"daysOff\": 2,\n        \"ceremonyDays\": 1,\n        \"hourRangeLow\": 4,\n        \"hourRangeHigh\": 6\n    },\n    {\n        \"daysOff\": 1,\n        \"ceremonyDays\": 1,\n        \"hourRangeLow\": 5,\n        \"hourRangeHigh\": 7\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/sprint/calculateTeamCapacityRange?sprintDays=14",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"sprint",
+						"calculateTeamCapacityRange"
+					],
+					"query": [
+						{
+							"key": "sprintDays",
+							"value": "14"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calculate Average Velocity",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[8, 13, 21, 5, 8]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/sprint/calculateAverageVelocity",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"sprint",
+						"calculateAverageVelocity"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
