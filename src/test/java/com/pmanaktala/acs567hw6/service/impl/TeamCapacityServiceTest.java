@@ -12,6 +12,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 @SpringBootTest
 class TeamCapacityServiceTest {
 
@@ -62,5 +65,21 @@ class TeamCapacityServiceTest {
         });
         Assertions.assertEquals("Average Capacity: 127.00 person-hours",
                 teamCapacityService.calculateAverageTeamCapacity(14, teamMemberDetails), "Expected non zero for list");
+    }
+
+    @Test
+    void calculateAverageTeamCapacity_negativeSprintDays_throwsException() {
+        Exception exception = assertThrows(Exception.class, () ->
+                teamCapacityService.calculateAverageTeamCapacity(-1, List.of(new TeamMemberDetails()))
+        );
+        assertTrue(exception.getMessage().contains("Sprint days must be greater than 0"));
+    }
+
+    @Test
+    void calculateTeamCapacityRange_negativeSprintDays_throwsException() {
+        Exception exception = assertThrows(Exception.class, () ->
+                teamCapacityService.calculateTeamCapacityRange(-1, List.of(new TeamMemberDetails()))
+        );
+        assertTrue(exception.getMessage().contains("Sprint days must be greater than 0"));
     }
 }

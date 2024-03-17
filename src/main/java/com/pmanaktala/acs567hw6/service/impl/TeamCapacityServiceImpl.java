@@ -26,6 +26,9 @@ public class TeamCapacityServiceImpl implements TeamCapacityService {
      */
     @Override
     public String calculateAverageTeamCapacity(int sprintDays, List<TeamMemberDetails> teamMembers) {
+        if (sprintDays <= 0) {
+            throw new RuntimeException("Sprint days must be greater than 0");
+        }
 
         double totalCapacity = 0.0;
 
@@ -53,6 +56,10 @@ public class TeamCapacityServiceImpl implements TeamCapacityService {
      */
     @Override
     public String calculateTeamCapacityRange(int sprintDays, List<TeamMemberDetails> teamMembers) {
+        if (sprintDays <= 0) {
+            throw new RuntimeException("Sprint days must be greater than 0");
+        }
+
         double totalMinCapacity = 0;
         double totalMaxCapacity = 0;
 
