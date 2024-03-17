@@ -6,11 +6,13 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class SprintVelocitySteps {
 
     @Autowired
@@ -21,8 +23,12 @@ public class SprintVelocitySteps {
 
     @Given("the following sprint points: {string}")
     public void the_following_sprint_points(String points) {
-        sprintPoints = Arrays.stream(points.split(",")).map(String::trim).map(Integer::parseInt)
-                .collect(Collectors.toList());
+        if (points.isEmpty()) {
+            this.sprintPoints = new ArrayList<>();
+        } else {
+            this.sprintPoints = Arrays.stream(points.split(",")).map(String::trim).map(Integer::parseInt)
+                    .collect(Collectors.toList());
+        }
     }
 
     @When("I calculate the average velocity")

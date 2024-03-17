@@ -47,4 +47,19 @@ public class TeamCapacitySteps {
     public void the_capacity_range_should_be(String expected) {
         assertEquals(expected, result);
     }
+
+    @When("I attempt to calculate the team capacity range")
+    public void i_attempt_to_calculate_the_team_capacity_range() {
+        try {
+            result = teamCapacityService.calculateTeamCapacityRange(sprintDays, teamMemberDetails);
+        } catch (Exception e) {
+            result = e.getMessage();
+        }
+    }
+
+    @Then("I should receive an error message {string}")
+    public void i_should_receive_an_error_message(String expectedErrorMessage) {
+        assertEquals(expectedErrorMessage, result);
+    }
+
 }
